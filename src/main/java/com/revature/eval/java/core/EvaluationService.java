@@ -234,7 +234,6 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		//string = string.replaceAll("[^0-9]", "");
 		
 		string = string.replaceAll("[().-]", "");
 		string = string.replaceAll(" +", "");
