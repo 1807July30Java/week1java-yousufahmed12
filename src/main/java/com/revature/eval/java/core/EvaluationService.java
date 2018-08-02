@@ -30,8 +30,26 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		String last = "";
+		
+		if(phrase.length() == 0)
+		{
+			return last;
+		}
+		else
+		{
+			
+		 String[] array1 = phrase.replaceAll("[^a-zA-Z ]", " ").toUpperCase().split("\\s+");
+		 
+		 for(String a: array1)
+		 {
+			 
+			 last = last + a.substring(0, 1);
+		 }
+		 
+		}
+		return last;
 	}
 
 	/**
@@ -84,18 +102,40 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne == sideTwo && sideOne == sideThree)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne == sideTwo && sideOne == sideThree)
+			{
+				return false;
+			}
+			else if(sideOne == sideTwo || sideOne == sideThree || sideTwo == sideThree)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if(!(sideOne == sideTwo || sideOne == sideThree || sideTwo == sideThree))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 	}
@@ -116,8 +156,50 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		int last = 0;
+		if(string.length() == 0)
+		{
+		return last;
+		}
+		else
+		{
+			char[] charsList = string.toCharArray();
+			for(char m : charsList)
+			{
+				m = Character.toUpperCase(m);
+				
+				if(m == 'A' || m == 'E' || m == 'I' ||m == 'O' ||m == 'U' ||m == 'L' ||m == 'N' 
+							|| m == 'R' ||m == 'S' ||m == 'T')	
+				{
+					last = last + 1;
+				}
+				else if(m == 'D' || m == 'G')
+				{
+					last = last + 2;
+				}
+				else if(m == 'B' || m =='C' || m == 'M' || m == 'P')
+				{
+					last = last + 3;
+				}
+				else if(m == 'F' || m =='H' || m == 'V' || m == 'W' || m == 'Y')
+				{
+					last = last + 4;
+				}
+				else if(m == 'K')
+				{
+					last = last + 5;
+				}
+				else if(m == 'J' || m =='X')
+				{
+					last = last + 8;
+				}
+				else if(m == 'Q' || m =='Z')
+				{
+					last = last + 10;
+				}
+			}
+			return last;
+		}
 	}
 
 	/**
@@ -152,8 +234,27 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		//string = string.replaceAll("[^0-9]", "");
+		
+		string = string.replaceAll("[().-]", "");
+		string = string.replaceAll(" +", "");
+		
+		String regexs = "[0-9]+"; //used to check if numerical
+		
+		if(string.length() > 11)
+		{
+			
+			throw new IllegalArgumentException();
+		}
+		else if(string.matches(regexs))
+		{
+			return string;
+		
+		}
+		else
+		{
+			throw new IllegalArgumentException();
+		}
 	}
 
 	/**
@@ -311,7 +412,7 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
-	static class RotationalCipher {
+	/*static class RotationalCipher {
 		private int key;
 
 		public RotationalCipher(int key) {
@@ -324,7 +425,7 @@ public class EvaluationService {
 			return null;
 		}
 
-	}
+	}*/
 
 	/**
 	 * 12. Given a number n, determine what the nth prime is.
